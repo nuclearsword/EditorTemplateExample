@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-lg-3">
+        @Html.ActionLink("With Editor Templates", "WithEditorTemplates", null, new { @class="btn btn-primary" })
+    </div>
+    <div class="col-lg-3">
+        @Html.ActionLink("Without Editor Templates", "WithoutEditorTemplates", null, new { @class = "btn btn-primary" })
+    </div>
+</div>

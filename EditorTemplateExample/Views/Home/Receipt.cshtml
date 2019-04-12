@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EditorTemplateExample.Models.Session>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Receipt</title>
+</head>
+<body>
+    <div class="container"> 
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Receipt</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Session Name</th>
+                                <th>Session Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*EditorFor will look in the DisplayTemplates folder and find the template that is bound to the Session model.
+                                It will display all of the sessions and keep the model bound to the objects.*@
+                            @Html.DisplayFor(m => Model)
+                        </tbody>
+                    </table>
+                    <h4>Grand Total: $@(Model.Count() > 0 ? Model.Sum(m => m.Cost) : 0)</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@model EditorTemplateExample.Models.SessionDetail
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Example Without Editor Templates</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm("ThePostAction", "home", FormMethod.Post))
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Attend?</th>
+                                    <th>Session Name</th>
+                                    <th>Session Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var session in Model.sessions)
+                                {
+                                    <tr>
+                                        <td>@Html.CheckBoxFor(m => session.IsSignedUp)</td>
+                                        <td>@session.Name</td>
+                                        <td>$@session.Cost</td>
+                                    </tr>
+                                    @Html.HiddenFor(m => session.Cost)
+                                    @Html.HiddenFor(m => session.SessionID)
+                                    @Html.HiddenFor(m => session.Name)
+                                }
+                            </tbody>
+                        </table>
+                        <div>
+                            <input type="submit" value="Submit" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
